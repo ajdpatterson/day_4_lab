@@ -13,19 +13,22 @@ tasks = [
 ## Get a list of uncompleted tasks
 def get_uncompleted_tasks(list):
 
-    uncompleted_tasks = []
-    for task in tasks:
-        if task["completed"] == False:
-            uncompleted_tasks.append(task)
-    return uncompleted_tasks
+    # uncompleted_tasks = []
+    # for task in tasks:
+    #     if task["completed"] == False:
+    #         uncompleted_tasks.append(task)
+    # return uncompleted_tasks
+    return get_tasks_by_status(list, False)
+
 
 ## Get a list of completed tasks
 def get_completed_tasks(list):
-    completed_tasks = []
-    for task in tasks:
-        if task["completed"] == True:
-            completed_tasks.append(task)
-    return completed_tasks
+#     completed_tasks = []
+#     for task in tasks:
+#         if task["completed"] == True:
+#             completed_tasks.append(task)
+    # return completed_tasks
+    return get_tasks_by_status(list, True)
 
 ## Get tasks where time_taken is at least a given time
 def get_tasks_taking_at_least(list, time):
@@ -46,7 +49,15 @@ def get_task_with_description(list, description):
 
 ## Get a list of tasks by status
 def get_tasks_by_status(list, status):
-    pass
+    list_of_tasks = []
+    
+    for task in tasks:
+        if task["completed"] == status:
+            list_of_tasks.append(task)
+    return list_of_tasks
+
+
+
 
 def mark_task_complete(task):
     task["completed"] = True
@@ -91,9 +102,11 @@ while (True):
     if option == '1':
         print_list(tasks)
     elif option == '2':
-        print_list(get_uncompleted_tasks(tasks))
+        status = False
+        print_list(get_tasks_by_status(status))
     elif option == '3':
-        print_list(get_completed_tasks(tasks))
+        status = True
+        print_list(get_tasks_by_status(status))
     elif option == '4':
         description = input("Enter task description to search for: ")
         task = get_task_with_description(tasks, description)
