@@ -9,9 +9,9 @@ while (True):
     if option == '1':
         print_list(tasks)
     elif option == '2':
-        print_list(get_uncompleted_tasks(tasks))
+        print_list(get_tasks_by_status(tasks, False))
     elif option == '3':
-        print_list(get_completed_tasks(tasks))
+        print_list(get_tasks_by_status(tasks, True))
     elif option == '4':
         description = input("Enter task description to search for: ")
         task = get_task_with_description(tasks, description)

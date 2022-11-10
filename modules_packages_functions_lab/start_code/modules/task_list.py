@@ -103,10 +103,10 @@ while (True):
         print_list(tasks)
     elif option == '2':
         status = False
-        print_list(get_tasks_by_status(status))
+        print_list(get_tasks_by_status(status, False))
     elif option == '3':
         status = True
-        print_list(get_tasks_by_status(status))
+        print_list(get_tasks_by_status(status, True))
     elif option == '4':
         description = input("Enter task description to search for: ")
         task = get_task_with_description(tasks, description)
